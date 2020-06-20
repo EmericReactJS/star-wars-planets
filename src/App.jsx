@@ -11,5 +11,4 @@ class App extends Component {
   }
 }
 
-// eslint-disable-next-line no-undef
 export default hot(module)(App);
