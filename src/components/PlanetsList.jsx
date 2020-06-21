@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlanetsDetails from '../components/PlanetsDetails';
+import PlanetDetails from './PlanetDetails';
 
 const PlanetsList = ({ planets }) => {
   return (
     <>
-      <PlanetsDetails planets={planets} />
+      <PlanetDetails planets={planets} />
     </>
   );
 };

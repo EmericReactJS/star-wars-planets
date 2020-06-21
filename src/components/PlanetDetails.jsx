@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PlanetsDetails = ({ planets }) => {
+const PlanetDetails = ({ planets }) => {
   return (
     <>
       <ul></ul>
@@ -9,8 +9,8 @@ const PlanetsDetails = ({ planets }) => {
   );
 };
 
-PlanetsDetails.propTypes = {
+PlanetDetails.propTypes = {
   planets: PropTypes.array
 };
 
-export default PlanetsDetails;
+export default PlanetDetails;
