@@ -1,10 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const PlanetsDetails = () => {
-  return <div></div>;
+const PlanetsDetails = ({ planets }) => {
+  return (
+    <>
+      <ul></ul>
+    </>
+  );
 };
 
-PlanetsDetails.propTypes = {};
+PlanetsDetails.propTypes = {
+  planets: PropTypes.array
+};
 
 export default PlanetsDetails;

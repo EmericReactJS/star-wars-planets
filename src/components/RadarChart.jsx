@@ -1,10 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const RadarChart = () => {
-  return <div></div>;
+const RadarChart = ({ selectedPlanets, selected }) => {
+  return <></>;
 };
 
-RadarChart.propTypes = {};
+RadarChart.propTypes = {
+  selectedPlanets: PropTypes.array,
+  selected: PropTypes.bool
+};
 
 export default RadarChart;
