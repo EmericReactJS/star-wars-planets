@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const PlanetDetails = ({ planets }) => {
+const PlanetDetails = ({ planet }) => {
   return (
     <>
-      <ul></ul>
+      <ul>
+        <li>{planet.name}</li>
+        <li>{planet.diameter}</li>
+      </ul>
     </>
   );
 };
 
 PlanetDetails.propTypes = {
-  planets: PropTypes.array
+  planet: PropTypes.object
 };
 
 export default PlanetDetails;
