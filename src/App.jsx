@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
+import css from 'styled-jsx/css';
 import SearchBar from './components/SearchBar';
 import PlanetsList from './components/PlanetsList';
 import RadarChart from './components/RadarChart';
 import fetchPlanets from './services/api/fetchPlanets';
 
+const styles = css`
+  .app {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 480px;
+  }
+`;
+
 const App = () => {
-  const [planets, setPlanets] = useState([]); // planet list fetched;
-  const [planetName, setPlanetName] = useState(''); // planet name;
-  const [filteredPlanets, setFilteredPlanets] = useState([]); // planet list filtered by search;
-  const [selected, setSelected] = useState(); // selected radio button of planet bool;
-  const [selectedPlanets, setSelectedPlanets] = useState([]); // selected planet list;
-  const [cssTransition, setCssTransition] = useState(); // sets cssTransition from react transition group;
+  const [planets, setPlanets] = useState([]);
+  const [planetName, setPlanetName] = useState('');
+  const [filteredPlanets, setFilteredPlanets] = useState([]);
+  const [selected, setSelected] = useState();
+  const [selectedPlanets, setSelectedPlanets] = useState([]);
 
   useEffect(() => {
     fetchPlanets()
@@ -36,25 +48,28 @@ const App = () => {
   const handleSetSelected = (i, planet) => {
     if (!selectedPlanets.includes(planet)) {
       if (planetName.length < 1) {
-        setSelected(planets.indexOf(planet));
         setSelectedPlanets([...selectedPlanets, planets[i]]);
       } else {
-        setSelected(filteredPlanets.indexOf(planet));
         setSelectedPlanets([...selectedPlanets, filteredPlanets[i]]);
       }
+    } else {
+      const deleteIndex = selectedPlanets.indexOf(planet);
+      selectedPlanets.splice(deleteIndex, 1);
+      setSelectedPlanets([...selectedPlanets]);
     }
   };
 
   return (
-    <div className="App">
-      <SearchBar value={planetName} handleChange={(e) => handleChange(e)} />
-      <PlanetsList
-        planets={planetName.length < 1 ? planets : filteredPlanets}
-        setSelected={handleSetSelected}
-      />
-      {/* wrap in Csstransisiton */}
-
-      <RadarChart selectedPlanets={selectedPlanets} selected={selected} />
+    <div className="app">
+      <div className="list-container">
+        <SearchBar value={planetName} handleChange={(e) => handleChange(e)} />
+        <PlanetsList
+          planets={planetName.length < 1 ? planets : filteredPlanets}
+          setSelected={handleSetSelected}
+        />
+      </div>
+      <RadarChart selectedPlanets={selectedPlanets} />
+      <style jsx>{styles}</style>
     </div>
   );
 };

@@ -15,36 +15,46 @@ const styles = css`
     width: 480px;
     overflow: auto;
     justify-content: center;
+    padding: 0;
   }
   .planet-element {
     margin: 8px;
+    display: flex;
   }
   .planet-card-header {
+    position: relative;
     display: flex;
-    align-items: baseline;
-    justify-content: space-around;
+    align-items: center;
     border: 1px solid ${colors.swpPrimaryOrange};
+    min-width: 320px;
     border-radius: 8px;
     padding: 8px;
   }
-  .icon-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .icon-button-collapse {
     background: none;
     border: none;
     outline: transparent;
+    position: absolute;
+    right: 24px;
+  }
+  .icon-button-radar {
+    background: none;
+    border: none;
+    outline: transparent;
+    margin-left: 24px;
   }
   .planet-title {
     font-family: ${fonts.primaryFont};
     color: ${colors.swpPrimaryBlue};
-    margin: 0px;
+    margin: 0px 0px 0px 24px;
   }
 `;
 
 const iconStyles = css.resolve`
   .icon-button_icon_open {
+    width: 24px;
+  }
+  .icon-button_icon_add {
     width: 24px;
   }
   .icon-button_icon_close {
@@ -67,22 +77,27 @@ const PlanetsList = ({ planets, setSelected }) => {
       <ul className="planet-list">
         {planets.map((planet, i) => {
           return (
-            <li className="planet-element" key={planet.name}>
-              <div className="planet-card-header">
-                <h3 className="planet-title">{planet.name}</h3>
-                <button className="icon-button" onClick={() => handleClick(i)}>
-                  <CollapseIcon
-                    className={classnames(
-                      'icon-button_icon_open',
-                      {
-                        'icon-button_icon_close': planetIndex === i
-                      },
-                      iconStyles.className
-                    )}
-                  />
-                </button>
+            <>
+              <li className="planet-element" key={planet.name}>
+                <div className="planet-card-header">
+                  <h3 className="planet-title">{planet.name}</h3>
+                  <button
+                    className="icon-button-collapse"
+                    onClick={() => handleClick(i)}
+                  >
+                    <CollapseIcon
+                      className={classnames(
+                        'icon-button_icon_open',
+                        {
+                          'icon-button_icon_close': planetIndex === i
+                        },
+                        iconStyles.className
+                      )}
+                    />
+                  </button>
+                </div>
                 <button
-                  className="icon-button"
+                  className="icon-button-radar"
                   onClick={() => setSelected(i, planet)}
                 >
                   <RadarIcon
@@ -92,10 +107,10 @@ const PlanetsList = ({ planets, setSelected }) => {
                     )}
                   />
                 </button>
-              </div>
-              {/* wrap in Csstransisiton */}
+                {/* wrap in Csstransisiton */}
+              </li>
               <PlanetDetails planet={planet} showDetails={planetIndex === i} />
-            </li>
+            </>
           );
         })}
       </ul>

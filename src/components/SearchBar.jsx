@@ -32,7 +32,6 @@ const styles = css`
 const SearchBar = ({ value, handleChange }) => {
   return (
     <>
-      <label htmlFor="search"></label>
       <input
         className="search-input"
         value={value}

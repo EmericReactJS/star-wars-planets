@@ -7,7 +7,6 @@ const styles = css`
   .detail-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
   .hidden-detail-list {
     display: none;
