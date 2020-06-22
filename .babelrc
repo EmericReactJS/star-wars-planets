@@ -8,6 +8,7 @@
       }
     ],
     "react-hot-loader/babel",
-    "styled-jsx/babel"
+    "styled-jsx/babel",
+    "inline-react-svg"
   ]
 }
