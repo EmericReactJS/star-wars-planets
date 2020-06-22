@@ -23,7 +23,6 @@ const App = () => {
   const [planets, setPlanets] = useState([]);
   const [planetName, setPlanetName] = useState('');
   const [filteredPlanets, setFilteredPlanets] = useState([]);
-  const [selected, setSelected] = useState();
   const [selectedPlanets, setSelectedPlanets] = useState([]);
 
   useEffect(() => {
