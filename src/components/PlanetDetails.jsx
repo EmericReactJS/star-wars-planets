@@ -36,7 +36,7 @@ const PlanetDetails = ({ planet, showDetails }) => {
         <dt className="description-title">Climat:</dt>
         <dd className="description">{planet.climate}</dd>
         <dt className="description-title">Gravité:</dt>
-        <dd className="description">{planet.gravity}</dd>
+        <dd className="description">{planet.gravity[0]}</dd>
         <dt className="description-title">
           Période orbital en nombres de jours:
         </dt>

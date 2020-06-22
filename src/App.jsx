@@ -11,7 +11,7 @@ const App = () => {
   const [planetName, setPlanetName] = useState(''); // planet name;
   const [filteredPlanets, setFilteredPlanets] = useState([]); // planet list filtered by search;
   const [selected, setSelected] = useState(); // selected radio button of planet bool;
-  const [selectedPlanets, setSelectedPlanes] = useState([]); // selected planet list;
+  const [selectedPlanets, setSelectedPlanets] = useState([]); // selected planet list;
   const [cssTransition, setCssTransition] = useState(); // sets cssTransition from react transition group;
 
   useEffect(() => {
@@ -33,11 +33,24 @@ const App = () => {
     }
   };
 
+  const handleSetSelected = (i, planet) => {
+    if (!selectedPlanets.includes(planet)) {
+      if (planetName.length < 1) {
+        setSelected(planets.indexOf(planet));
+        setSelectedPlanets([...selectedPlanets, planets[i]]);
+      } else {
+        setSelected(filteredPlanets.indexOf(planet));
+        setSelectedPlanets([...selectedPlanets, filteredPlanets[i]]);
+      }
+    }
+  };
+
   return (
     <div className="App">
       <SearchBar value={planetName} handleChange={(e) => handleChange(e)} />
       <PlanetsList
         planets={planetName.length < 1 ? planets : filteredPlanets}
+        setSelected={handleSetSelected}
       />
       {/* wrap in Csstransisiton */}
 

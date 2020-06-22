@@ -5,13 +5,16 @@ import { colors, fonts } from '../common/Theme';
 import PropTypes from 'prop-types';
 import PlanetDetails from './PlanetDetails';
 import CollapseIcon from '../assets/icons/atom_icon_collapse.svg';
+import RadarIcon from '../assets/icons/atom_icon_radar.svg';
 
 const styles = css`
   .planet-list {
     list-style-type: none;
     display: flex;
-    max-width: 560px;
     flex-wrap: wrap;
+    width: 480px;
+    overflow: auto;
+    justify-content: center;
   }
   .planet-element {
     margin: 8px;
@@ -36,6 +39,7 @@ const styles = css`
   .planet-title {
     font-family: ${fonts.primaryFont};
     color: ${colors.swpPrimaryBlue};
+    margin: 0px;
   }
 `;
 
@@ -49,7 +53,7 @@ const iconStyles = css.resolve`
   }
 `;
 
-const PlanetsList = ({ planets }) => {
+const PlanetsList = ({ planets, setSelected }) => {
   const [planetIndex, setPlanetIndex] = useState();
   const handleClick = (i) => {
     if (planetIndex === undefined) {
@@ -64,9 +68,8 @@ const PlanetsList = ({ planets }) => {
         {planets.map((planet, i) => {
           return (
             <li className="planet-element" key={planet.name}>
-              {/* <h1 className="planet-element-title">{planet.name}</h1> */}
               <div className="planet-card-header">
-                <h1 className="planet-title">{planet.name}</h1>
+                <h3 className="planet-title">{planet.name}</h3>
                 <button className="icon-button" onClick={() => handleClick(i)}>
                   <CollapseIcon
                     className={classnames(
@@ -74,6 +77,17 @@ const PlanetsList = ({ planets }) => {
                       {
                         'icon-button_icon_close': planetIndex === i
                       },
+                      iconStyles.className
+                    )}
+                  />
+                </button>
+                <button
+                  className="icon-button"
+                  onClick={() => setSelected(i, planet)}
+                >
+                  <RadarIcon
+                    className={classnames(
+                      'icon-button_icon_add',
                       iconStyles.className
                     )}
                   />
@@ -92,7 +106,8 @@ const PlanetsList = ({ planets }) => {
 };
 
 PlanetsList.propTypes = {
-  planets: PropTypes.array
+  planets: PropTypes.array,
+  setSelected: PropTypes.func
 };
 
 export default PlanetsList;
