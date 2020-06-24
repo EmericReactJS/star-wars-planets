@@ -1,4 +1,4 @@
-#Liste des planètes de Star Wars avec graphique radar :
+# Liste des planètes de Star Wars avec graphique radar :
 
 ___
 
@@ -13,7 +13,9 @@ ___
 Technologies: 
 
 **React**
+
 **Webpack**
+
 **Babel**
 
 ___
