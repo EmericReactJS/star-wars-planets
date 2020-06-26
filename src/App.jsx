@@ -8,7 +8,7 @@ import fetchPlanets from './services/api/fetchPlanets';
 
 const styles = css`
   .app {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   .list-container {
@@ -16,6 +16,7 @@ const styles = css`
     flex-direction: column;
     align-items: center;
     max-width: 480px;
+    margin: 36px;
   }
 `;
 

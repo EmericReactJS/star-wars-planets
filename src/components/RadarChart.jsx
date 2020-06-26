@@ -8,13 +8,24 @@ import RadarIcon from '../assets/icons/atom_icon_radar.svg';
 
 const styles = css`
   .chart-radar {
-    width: 480px;
+    width: 320px;
     position: fixed;
     top: 128px;
-    right: 240px;
+    right: 0px;
     text-align: center;
     font-family: ${fonts.primaryFont};
     color: ${colors.swpPrimaryOrange};
+  }
+  @media (min-width: 840px) {
+    .chart-radar {
+      width: 400px;
+    }
+  }
+  @media (min-width: 1360px) {
+    .chart-radar {
+      width: 480px;
+      right: 240px;
+    }
   }
 `;
 
@@ -59,7 +70,7 @@ const RadarChart = ({ selectedPlanets }) => {
         {selectedPlanets.length > 0 ? (
           <Radar
             data={data}
-            width={960}
+            width={840}
             height={560}
             options={{ ...options, maintainAspectRatio: false }}
           />
