@@ -1,5 +1,5 @@
 # Liste des planètes de Star Wars avec graphique radar :
-
+(réalisé sous contrainte de charte graphique pour la police, les boutons et les couleurs)
 ___
 
 
