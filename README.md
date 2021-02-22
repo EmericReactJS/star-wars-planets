@@ -1,6 +1,8 @@
 # Select a planet in the list with the **Radar** button to add it to the graphic.
-(achieved with graphic charter constraint for fonts, buttons, colors)
-
+achieved with constraints:
+- graphic charter (for fonts, buttons, colors).
+- swapi API usage
+ 
 ![alt text](https://github.com/EmericReactJS/star-wars-planets/raw/master/preview.gif)
 
 ___
