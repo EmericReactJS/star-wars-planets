@@ -8,7 +8,7 @@ achieved with constraints:
 ___
 
 
-Technologies: 
+Technologies: (custom boilerplate and config)
 
 **React**
 
