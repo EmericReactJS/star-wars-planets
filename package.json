@@ -14,7 +14,7 @@
     "@babel/runtime": "^7.10.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-inline-react-svg": "^1.1.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "classnames": "^2.2.6",
     "eslint": "^7.3.0",
     "eslint-config-prettier": "^6.11.0",
